@@ -15,7 +15,7 @@ import { Auth } from 'src/auth/decorator/auth.decorator';
 import { ProductDTO } from './dto/product.dto';
 import { ProductService } from './product.service';
 
-@Controller('product')
+@Controller('products')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
   @UsePipes(new ValidationPipe())

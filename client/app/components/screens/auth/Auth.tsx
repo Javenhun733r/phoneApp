@@ -8,16 +8,18 @@ import Button from '@/components/ui/button/Button'
 import { IAuthFormData } from '@/types/auth.interface'
 
 import AuthFields from './AuthFields'
+import { useAuthMutations } from './useAuthMutations'
 
 const Auth: FC = () => {
 	const [isReg, setIsReg] = useState(false)
 	const { handleSubmit, reset, control } = useForm<IAuthFormData>({
 		mode: 'onChange'
 	})
+	const { isLoading, loginSync, registerSync } = useAuthMutations(reset)
 	const onSubmit: SubmitHandler<IAuthFormData> = data => {
-		console.log(data)
+		if (isReg) registerSync(data)
+		else loginSync(data)
 	}
-	const isLoading = false
 	return (
 		<View className='mx-2 items-center justify-center h-full'>
 			<View className='w-9/12'>
@@ -37,8 +39,9 @@ const Auth: FC = () => {
 								{isReg
 									? 'Already have an account? '
 									: "Don't have an account? "}
+
 								<Text className='text-[#47AA52]'>
-									{isReg ? 'Sign Up' : 'Login'}
+									{isReg ? 'Login' : 'Sign Up'}
 								</Text>
 							</Text>
 						</Pressable>

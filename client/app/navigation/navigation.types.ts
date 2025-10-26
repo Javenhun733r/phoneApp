@@ -6,6 +6,14 @@ export type TypeRootStackParamList = {
 	Product: {
 		slug: string
 	}
+	Favorites: undefined
+	Search: undefined
+	Explorer: undefined
+	Profile: undefined
+	Cart: undefined
+	Category: {
+		slug: string
+	}
 }
 export interface IRoute {
 	name: keyof TypeRootStackParamList
