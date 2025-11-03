@@ -22,7 +22,7 @@ export const ProductService = {
 			method: 'GET'
 		})
 	},
-	async getByCategories(categorySlug: string) {
+	async getByCategory(categorySlug: string) {
 		return request<IProduct>({
 			url: getProductsUrl(`/by-category/${categorySlug}`),
 			method: 'GET',
