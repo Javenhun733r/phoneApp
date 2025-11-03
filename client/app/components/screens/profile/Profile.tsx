@@ -9,6 +9,7 @@ import { useAuth } from '@/hooks/useAuth'
 
 import { AuthService } from '@/services/auth/auth.service'
 
+import OrderHistory from './order-history/OrderHistory'
 import { useProfile } from './useProfile'
 
 const Profile: FC = () => {
@@ -22,6 +23,9 @@ const Profile: FC = () => {
 					source={{ uri: profile?.avatarPath }}
 					className='w-40 h-40 rounded-full'
 				/>
+			</View>
+			<View className='px-4 w-full'>
+				<OrderHistory />
 			</View>
 			<Button
 				onPress={() => AuthService.logout().then(() => setUser(null))}
